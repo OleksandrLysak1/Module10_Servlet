@@ -12,7 +12,7 @@ public class TimezoneValidateFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        // Ініціалізація, якщо необхідно
     }
 
     @Override
@@ -25,13 +25,11 @@ public class TimezoneValidateFilter implements Filter {
 
         if (timezone != null && !timezone.isEmpty()) {
             try {
-
                 ZoneId.of(timezone);
             } catch (Exception e) {
-
                 httpResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 httpResponse.setContentType("text/html");
-                httpResponse.getWriter().println("<html><body><h1>Invalid timezone</h1></body></html>");
+                httpResponse.getWriter().println("<html><body><h1>Недійсна зона часу</h1></body></html>");
                 return;
             }
         }
@@ -41,6 +39,6 @@ public class TimezoneValidateFilter implements Filter {
 
     @Override
     public void destroy() {
-
+        // Очистка ресурсів, якщо необхідно
     }
 }
